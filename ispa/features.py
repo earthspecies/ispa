@@ -217,7 +217,6 @@ class FeatureBasedISPAPredictor:
         # extract feature
         feature = self.feature_extractor(waveform)   # (batch, time, feature)
         feature = feature.squeeze(0)            # (time, feature)
-        print(feature.shape)
 
         # apply k-means
         feature = feature.detach().numpy()
