@@ -2,7 +2,7 @@
 
 ![](./fig_ispa.png)
 
-ISPA (Inter-Species Phonetic Alphabet) is a precise, concise, and interpretable system designed for transcribing animal sounds into text, inspired by IPA (International Phonetic Alphabet) used for transcribing human speech sounds into text.
+ISPA (Inter-Species Phonetic Alphabet) is a precise, concise, and interpretable system designed for transcribing animal sounds into text, inspired by IPA (International Phonetic Alphabet) used for transcribing human speech sounds into text. See [our paper](https://arxiv.org/abs/2402.03269) for more details.
 
 This repository contains the code and pretrained models for running the transcription.
 
