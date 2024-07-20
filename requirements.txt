@@ -1,4 +1,13 @@
+torch==2.0.1
+torchaudio==2.0.2
+auraloss==0.4.0
+crepe==0.0.14
 librosa==0.10.1
 pandas==2.0.3
 pesto-pitch==0.1.0
-SoundFile==0.12.1
+pygad==3.2.0
+scipy==1.10.1
+seaborn==0.13.0
+textgrid==1.5
+allosaurus==1.0.2
+csvkit==2.0.0

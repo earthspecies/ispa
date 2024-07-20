@@ -12,7 +12,7 @@ This repository contains the code and pretrained models for running the transcri
 1. Create a conda environment named 'ispa' with the required dependencies:
 
 ```
-conda create -n ispa python pytorch=1.12.1 cudatoolkit=11.3 torchvision torchaudio cudnn=8.3.2 -c pytorch -c conda-forge
+conda create -n ispa python=3.8
 conda activate ispa
 ```
 
