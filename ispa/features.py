@@ -194,7 +194,7 @@ def convert_to_text(tokens, phoneme_map=None):
 
 
 class FeatureBasedISPAPredictor:
-    def __init__(self, feature_type=None, kmeans_model=None, phoneme_map=None, **kwargs):
+    def __init__(self, feature_type=None, kmeans_model=None, phoneme_map=None, use_cuda=False, **kwargs):
         if feature_type == 'aves':
             self.feature_extractor = AvesFeatureExtractor(**kwargs)
         elif feature_type == 'mfcc':
@@ -210,15 +210,23 @@ class FeatureBasedISPAPredictor:
             with open(phoneme_map, 'r') as f:
                 self.phoneme_map = json.load(f)
 
+        self.use_cuda = use_cuda
+        if self.use_cuda:
+            self.feature_extractor = self.feature_extractor.cuda()
+
     def predict(self, waveform, variation=None):
         if variation not in {'raw', 'seg', 'phn'}:
             raise ValueError('variation must be "raw", "seg", or "phn"')
 
         # extract feature
+        if self.use_cuda:
+            waveform = waveform.cuda()
         feature = self.feature_extractor(waveform)   # (batch, time, feature)
         feature = feature.squeeze(0)            # (time, feature)
 
         # apply k-means
+        if self.use_cuda:
+            feature = feature.cpu()
         feature = feature.detach().numpy()
 
         if variation == 'raw':
